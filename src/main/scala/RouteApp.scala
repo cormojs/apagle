@@ -1,14 +1,21 @@
-import java.io.{BufferedInputStream, FileInputStream}
-import java.security.{KeyStore, Security}
-import javax.net.ssl.{KeyManagerFactory, SSLContext}
-
-import com.twitter.finagle.Http
-import com.twitter.finagle.ssl.{CipherSuites, ClientAuth, KeyCredentials, TrustCredentials}
-import com.twitter.finagle.ssl.server.SslServerConfiguration
-import com.twitter.util.Await
 import java.io.File
 
+import com.twitter.finagle.Http
+import com.twitter.finagle.http.service.{NotFoundService, RoutingService}
+import com.twitter.finagle.ssl.server.SslServerConfiguration
+import com.twitter.finagle.ssl.{ClientAuth, KeyCredentials, TrustCredentials}
+import com.twitter.util.Await
+import com.twitter.finagle.http.Method._
+import com.twitter.finagle.http.path._
+
 object RouteApp extends App {
+  val printFilter = new PrintFilter()
+  val rootService = RoutingService.byMethodAndPathObject {
+    case Get -> Root => new MainService()
+    case Get -> Root / ".well-known" / "webfinger" => new WebfingerService()
+    case Get -> Root / ".well-known" / "host-meta" => new HostMetaService()
+    case _ => NotFoundService
+  }
 
   val server = Http
     .server
@@ -22,7 +29,7 @@ object RouteApp extends App {
         )
       )
     )
-    .serve(":8443", new MainService())
+    .serve(":8443", printFilter.andThen(rootService))
 
   Await.ready(server)
 

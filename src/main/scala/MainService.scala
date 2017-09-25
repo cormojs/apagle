@@ -1,6 +1,5 @@
-import com.twitter.finagle.{Http, Service}
-import com.twitter.finagle.http
-import com.twitter.util.{Await, Future}
+import com.twitter.finagle.{Service, http}
+import com.twitter.util.Future
 
 class MainService extends Service[http.Request, http.Response] {
   def apply(req: http.Request): Future[http.Response] = {
