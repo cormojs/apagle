@@ -1,3 +1,5 @@
+package jp.cormo.apagle.service
+
 import com.twitter.finagle.{Service, http}
 import com.twitter.util.Future
 

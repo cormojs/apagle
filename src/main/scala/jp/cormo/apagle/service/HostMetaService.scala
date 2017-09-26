@@ -1,4 +1,6 @@
-import java.io.{BufferedWriter, ByteArrayOutputStream, OutputStreamWriter}
+package jp.cormo.apagle.service
+
+import java.io.{ByteArrayOutputStream, OutputStreamWriter}
 
 import com.twitter.finagle.Service
 import com.twitter.finagle.http.{Request, Response, Status}
