@@ -1,4 +1,4 @@
-package jp.cormo.apagle.model
+package jp.cormo.apagle.model.extractor
 
 import java.net.{URI, URISyntaxException}
 

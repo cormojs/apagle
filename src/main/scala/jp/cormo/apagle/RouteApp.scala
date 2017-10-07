@@ -35,6 +35,7 @@ object RouteApp extends App {
       )
     )
     .serve(Config.hostname, printFilter.andThen(rootService))
+  println(Config.hostname, Config.serverCertPath, Config.serverKeyPath)
   Await.ready(server)
 
 }
