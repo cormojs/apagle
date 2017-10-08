@@ -1,4 +1,4 @@
-package jp.cormo.apagle.model.protocol
+package jp.cormo.apagle.model.json
 
 import com.fasterxml.jackson.annotation.JsonProperty
 
