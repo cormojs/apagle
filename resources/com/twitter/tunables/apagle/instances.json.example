@@ -1,0 +1,19 @@
+{
+  "tunables": [
+    {
+      "id": "Hostname",
+      "value": "example.com",
+      "type": "java.lang.String"
+    },
+    {
+      "id": "ServerCertPath",
+      "value": "example.crt",
+      "type": "java.lang.String"
+    },
+    {
+      "id": "ServerKeyPath",
+      "value": "example.key",
+      "type": "java.lang.String"
+    }
+  ]
+}
