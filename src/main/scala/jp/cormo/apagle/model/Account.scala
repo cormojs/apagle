@@ -1,4 +1,4 @@
-package jp.cormo.apagle.model.db
+package jp.cormo.apagle.model
 
 import java.net.URI
 
